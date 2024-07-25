@@ -1,18 +1,16 @@
-/* Reset some default styles */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Styling for body */
 body {
     font-family: Arial, sans-serif;
     color: rgb(0, 0, 0);
     background-color: #f4f4f4;
 }
 
-/* Header styling */
 .header {
     display: flex;
     justify-content: space-between;
@@ -46,7 +44,6 @@ body {
     background-color: #45a049;
 }
 
-/* Main content styling */
 .main-content {
     padding: 50px 20px;
     height: 100vh;
