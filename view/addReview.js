@@ -1,3 +1,22 @@
+function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+function creation() {
+    const d = new Date();
+    let day = d.getDate();
+    let month = d.getMonth();
+    let year = d.getFullYear();
+    let h = addZero(d.getHours());
+    let m = addZero(d.getMinutes());
+    let s = addZero(d.getSeconds());
+
+    let time = day + "-" + month + "-" + year + "  " + h + ":" + m + ":" + s;
+    return time;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const submitReviewBtn = document.getElementById("submitReviewBtn");
 
@@ -9,9 +28,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const reviewData = {
             title: document.getElementById("title").value,
             review: document.getElementById("review").value,
+            createdAt: creation(),
         };
 
         try {
+            if (!reviewData.title) {
+                throw new Error("Title can't be empty");
+            }
+            if (!reviewData.review) {
+                throw new Error("Review can't be empty");
+            }
+
             const response = await fetch("/api/setReview", {
                 method: "POST",
                 headers: {
@@ -30,7 +57,13 @@ document.addEventListener("DOMContentLoaded", function () {
             // Clear the form fields
             document.getElementById("reviewForm").reset();
         } catch (error) {
-            alert("Error submitting review. Please try again.");
+            if (error.message.includes("Title can't be empty")) {
+                showTemporaryAlert("Title can't be empty!", 5000);
+            } else if (error.message.includes("Review can't be empty")) {
+                showTemporaryAlert("Review can't be empty!", 5000);
+            } else {
+                alert("Error submitting review. Please try again.");
+            }
         }
     }
 

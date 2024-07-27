@@ -2,12 +2,13 @@ const reviewSchemaModel = require("../models/reviewSchema.js");
 
 exports.addReview = async (req, res) => {
     try {
-        const { title, review } = req.body;
+        const { title, review, createdAt } = req.body;
 
         // Create a new review instance
         const newReview = new reviewSchemaModel({
             title,
             review,
+            createdAt,
         });
 
         // Save the user to the database
