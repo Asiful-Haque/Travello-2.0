@@ -80,14 +80,15 @@ header {
 }
 
 .review-card {
-    background-color: #333;
+    background-color: #34495eb4;
     color: white; /* Ensure text is readable on dark background */
-    border: 1px solid #ddd;
+    /* border: 1px solid rgb(0, 0, 0); */
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.894);
     margin: 10px;
     padding: 20px;
     width: calc(20% - 20px); /* Adjust width to fit 4 cards per row */
+    height: 260px;
 }
 
 

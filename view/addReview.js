@@ -56,6 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Clear the form fields
             document.getElementById("reviewForm").reset();
+            setTimeout(() => {
+                window.location.href = "dashboard.html";
+            }, 2000);
+                
         } catch (error) {
             if (error.message.includes("Title can't be empty")) {
                 showTemporaryAlert("Title can't be empty!", 5000);

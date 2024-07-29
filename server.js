@@ -1,6 +1,7 @@
 const express = require("express");
 const registerRoutes = require("./routes/registration.js");
 const loginRoutes = require("./routes/login.js");
+const dashboardRoutes = require("./routes/dashboard.js");
 const reviewRoutes = require("./routes/review.js");
 const connectDB = require("./models/db.js");
 const path = require("path");
@@ -20,6 +21,7 @@ app.use(express.static("view"));
 //routes
 app.use(registerRoutes);
 app.use(loginRoutes);
+app.use(dashboardRoutes);
 app.use(reviewRoutes);
 
 app.get("/", (req, res) => {
