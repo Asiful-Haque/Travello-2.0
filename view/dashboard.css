@@ -3,19 +3,31 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    background-image: url("Group Tours.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.49);
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 10px;
+}
+
+.user-and-logout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
 }
 
 .logo {
     font-size: 24px;
+    font-weight: bold;
 }
 
 .search-container {
@@ -47,12 +59,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: rgba(136, 166, 29, 0.653);
-    border-bottom: 1px solid #ddd;
-}
-
-.greeting-section h1 {
-    margin: 0;
+    /* background-color: rgba(76, 158, 38, 0.653); */
 }
 
 .add-review-button {
@@ -67,22 +74,17 @@ header {
     background-color: #45a049;
 }
 
+
 .review-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     padding: 20px;
-    background-image: url('Group Tours.jpeg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
 }
 
 .review-card {
     background-color: #34495eb4;
     color: white; /* Ensure text is readable on dark background */
-    /* border: 1px solid rgb(0, 0, 0); */
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.894);
     margin: 10px;
@@ -91,11 +93,35 @@ header {
     height: 260px;
 }
 
-
 .review-card h2 {
     margin-top: 0;
 }
 
 .review-card p {
     margin-bottom: 0;
+}
+
+#pagination-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    gap: 5px;
+    color: #fff;
+}
+
+.page-button {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.page-button:hover {
+    background-color: #f0f0f0;
+}
+
+.page-button.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
 }

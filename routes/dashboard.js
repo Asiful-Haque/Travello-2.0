@@ -1,8 +1,8 @@
 const express = require("express");
-const { getReview } = require("../controller/dashboardController");
+const { getReviews } = require("../controller/dashboardController");
 
 const router = express.Router();
 
-router.get("/api/getReviews", getReview);
+router.get("/api/getReviews", getReviews);
 
 module.exports = router;

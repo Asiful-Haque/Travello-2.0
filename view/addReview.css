@@ -4,7 +4,9 @@ body {
     padding: 0;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     background-attachment: fixed;
+     background-image: url(Group\ Tours.jpeg);
     color: #333;
 }
 
@@ -12,13 +14,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.443);
     color: white;
     padding: 10px 20px;
 }
 
 .logo {
-    font-size: 1.5em;
+    font-size: 24px;
     font-weight: bold;
 }
 
@@ -36,10 +38,6 @@ main {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url(Group\ Tours.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 
 form {

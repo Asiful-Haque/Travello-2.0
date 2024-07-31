@@ -1,11 +1,17 @@
 const reviewSchemaModel = require("../models/reviewSchema.js");
 
-exports.getReview = async (req, res) => {
+exports.getReviews = async (req, res) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = 8;
+    const skip = (page - 1) * limit;
+
     try {
-        const reviews = await reviewSchemaModel.find();
-        res.status(200).json(reviews);
-    } catch (error) {
-        console.error("Error saving information: ", error.message);
-        res.status(500).send("Internal server error");
+        const reviews = await reviewSchemaModel.find().skip(skip).limit(limit);
+        const total = await reviewSchemaModel.countDocuments();
+        const totalPages = Math.ceil(total / limit);
+
+        res.json({ reviews, totalPages });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
 };
