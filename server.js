@@ -3,6 +3,7 @@ const registerRoutes = require("./routes/registration.js");
 const loginRoutes = require("./routes/login.js");
 const dashboardRoutes = require("./routes/dashboard.js");
 const reviewRoutes = require("./routes/review.js");
+const getReviewById = require("./routes/reviewByIdR");
 const connectDB = require("./models/db.js");
 const path = require("path");
 const bodyParser = require("body-parser");
@@ -23,6 +24,7 @@ app.use(registerRoutes);
 app.use(loginRoutes);
 app.use(dashboardRoutes);
 app.use(reviewRoutes);
+app.use(getReviewById);
 
 app.get("/", (req, res) => {
     res.send("Hello");

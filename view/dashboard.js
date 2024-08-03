@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const reviewContainer = document.getElementById("review-container");
     const paginationContainer = document.getElementById("pagination-container");
 
-    // Function to fetch reviews for a specific page
+    // For page 1
     async function fetchReviews(page = 1) {
         try {
             const response = await fetch(`/api/getReviews?page=${page}`);
@@ -24,14 +24,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 title.textContent = review.title;
 
                 const content = document.createElement("p");
+                content.classList.add("review-context");
                 content.textContent = review.review;
+
+                const date = document.createElement("h4");
+                date.textContent = review.createdAt;
 
                 card.appendChild(title);
                 card.appendChild(content);
+                card.appendChild(date);
                 reviewContainer.appendChild(card);
+
+                card.addEventListener("click", () => {
+                    window.location.href = `/reviewById.html?id=${review._id}`;
+                });
             });
 
-            // Render pagination buttons based on the total pages and current page
+            // Render pagination buttons 
             renderPagination(data.totalPages, page);
         } catch (error) {
             console.error("Error fetching reviews:", error);
@@ -46,15 +55,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isActive) {
             button.classList.add("active");
         }
-        // Attach an event listener to fetch reviews for the specific page when clicked
+        
         button.addEventListener("click", () => fetchReviews(page));
         return button;
     }
 
-    // Function to render pagination buttons
     function renderPagination(totalPages, currentPage) {
         paginationContainer.innerHTML = "";
-        const maxPagesToShow = 5; // Max number of pages to show at once
+        const maxPagesToShow = 5; 
         const half = Math.floor(maxPagesToShow / 2);
 
         if (totalPages <= maxPagesToShow) {
@@ -88,6 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Initial fetch and render of reviews and pagination
+    // Initial fetch 
     fetchReviews();
 });
