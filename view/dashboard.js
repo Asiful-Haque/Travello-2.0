@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!isLoggedIn) {
         alert("You must be logged in to view this page.");
         window.location.href = "index.html";
-        return; 
+        return;
     }
 
     const addReviewBtn = document.getElementById("add-review-button");
@@ -21,8 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const logoutButton = document.getElementById("logout-button");
     logoutButton.addEventListener("click", () => {
-        localStorage.removeItem("isLoggedIn");
-        window.location.href = "index.html";
+        const isConfirmed = confirm("Are you sure you want to log out?");
+        if (isConfirmed) {
+            localStorage.removeItem("isLoggedIn");
+            window.location.href = "index.html";
+        }
     });
 
     const reviewContainer = document.getElementById("review-container");

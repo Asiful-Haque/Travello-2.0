@@ -11,8 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const logoutButton = document.getElementById("logout-button");
     logoutButton.addEventListener("click", () => {
-        localStorage.removeItem("isLoggedIn");
-        window.location.href = "index.html";
+        const isConfirmed = confirm("Are you sure you want to log out?");
+        if (isConfirmed) {
+            localStorage.removeItem("isLoggedIn");
+            window.location.href = "index.html";
+        }
     });
 
     async function fetchReview() {
