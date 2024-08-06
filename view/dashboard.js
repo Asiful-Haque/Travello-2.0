@@ -1,9 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
+    //check whether logged in or not
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (!isLoggedIn) {
+        alert("You must be logged in to view this page.");
+        window.location.href = "index.html";
+        return; 
+    }
+
     const addReviewBtn = document.getElementById("add-review-button");
     addReviewBtn.addEventListener("click", () => {
         window.location.href = "addReview.html";
     });
 
+    const searchButton = document.getElementById("search-button");
+    searchButton.addEventListener("click", () => {
+        const search = document.getElementById("textValue").value;
+        window.location.href = `searchList.html?word=${encodeURIComponent(search)}`;
+        document.getElementById("textValue").value = "";
+    });
+
+    const logoutButton = document.getElementById("logout-button");
+    logoutButton.addEventListener("click", () => {
+        localStorage.removeItem("isLoggedIn");
+        window.location.href = "index.html";
+    });
 
     const reviewContainer = document.getElementById("review-container");
     const paginationContainer = document.getElementById("pagination-container");
@@ -40,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             });
 
-            // Render pagination buttons 
+            // Render pagination buttons
             renderPagination(data.totalPages, page);
         } catch (error) {
             console.error("Error fetching reviews:", error);
@@ -55,14 +75,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isActive) {
             button.classList.add("active");
         }
-        
+
         button.addEventListener("click", () => fetchReviews(page));
         return button;
     }
 
     function renderPagination(totalPages, currentPage) {
         paginationContainer.innerHTML = "";
-        const maxPagesToShow = 5; 
+        const maxPagesToShow = 5;
         const half = Math.floor(maxPagesToShow / 2);
 
         if (totalPages <= maxPagesToShow) {
@@ -96,6 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Initial fetch 
+    // Initial fetch
     fetchReviews();
 });

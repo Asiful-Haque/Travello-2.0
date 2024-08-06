@@ -1,6 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
+    //check whether logged in or not
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (!isLoggedIn) {
+        alert("You must be logged in to view this page.");
+        window.location.href = "index.html";
+        return;
+    }
+
     const reviewContainer = document.getElementById("review-container");
-    console.log("hello");
+
+    const logoutButton = document.getElementById("logout-button");
+    logoutButton.addEventListener("click", () => {
+        localStorage.removeItem("isLoggedIn");
+        window.location.href = "index.html";
+    });
 
     async function fetchReview() {
         const urlParams = new URLSearchParams(window.location.search);

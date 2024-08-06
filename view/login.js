@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             showTemporaryAlert("Logged in successfully!", 5000);
             document.getElementById("loginForm").reset();
+            localStorage.setItem("isLoggedIn", "true");
             window.location.href = "dashboard.html";
         } catch (error) {
             console.error("Error:", error);

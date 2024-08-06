@@ -18,9 +18,22 @@ function creation() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const submitReviewBtn = document.getElementById("submitReviewBtn");
+    //check whether logged in or not
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (!isLoggedIn) {
+        alert("You must be logged in to view this page.");
+        window.location.href = "index.html";
+        return;
+    }
 
+    const submitReviewBtn = document.getElementById("submitReviewBtn");
     submitReviewBtn.addEventListener("click", submitReviewBtnFunction);
+
+    const logoutButton = document.getElementById("logout-button");
+    logoutButton.addEventListener("click", () => {
+        localStorage.removeItem("isLoggedIn");
+        window.location.href = "index.html";
+    });
 
     async function submitReviewBtnFunction(event) {
         event.preventDefault(); // Prevent the form from submitting in the traditional way
@@ -59,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => {
                 window.location.href = "dashboard.html";
             }, 2000);
-                
         } catch (error) {
             if (error.message.includes("Title can't be empty")) {
                 showTemporaryAlert("Title can't be empty!", 5000);

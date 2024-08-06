@@ -137,3 +137,14 @@ header {
     color: #fff;
     border-color: #007bff;
 }
+
+.search-button button{
+    height: 40px;
+    width: 80px;
+    background-color: #34ae24cb;
+}
+
+.search-button button:hover {
+    background-color: #000000;
+    color: white;
+}
